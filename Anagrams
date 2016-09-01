@@ -1,0 +1,235 @@
+#include<stdlib.h>
+#include<stdio.h>
+#include<string.h>
+typedef struct linkedList{
+	char arr[100];
+	struct linkedList *next;
+}list;
+
+list * sorted;
+typedef struct finalList
+{
+	int count;
+	char arr[100][100];
+
+}final;
+final SetList[100];
+
+list * newNode()
+{
+	list *l1;
+l1=(list *)malloc(sizeof(list));
+l1->next=NULL;
+return l1;
+}
+
+	
+/*char * string_Creater()
+{
+	
+	char arr[100];
+	//int n,i;
+	printf("\n\tEnter the values : ");
+	//for(i=0;i<n;i++)
+		scanf("%s",arr);
+	
+//for(i=0;i<n;i++)
+//		printf("%s",arr);
+//scanf("%d",&n);
+return arr;
+}*/
+void displayList(list *head, int n)
+{
+	int i;
+	for(i=0;i<n;i++)
+	{
+		printf("\n%s",head->arr);
+		head=head->next;
+	}
+	scanf("%d",&n);
+}
+
+/*void listCreater(list *l1,int n,int num)
+{
+	int i;
+
+		
+}*/
+list * copyLinkedlist(list *head, int n)
+{
+int i;
+list *HeadSorted;
+	sorted=newNode();
+	HeadSorted=sorted;
+		for(i=0;i<n;i++){
+		
+			strcpy(sorted->arr,head->arr);
+			sorted->next=newNode();
+			sorted=sorted->next;
+			head=head->next;
+		}
+		head->next=NULL;
+	//	HeadSorted->next=NULL;
+		return HeadSorted;	
+}
+
+list * sortedList(int n){
+    char temp;
+    int i,j,len1,len2;
+    list * HeadSorted;
+    HeadSorted=sorted;
+	while(HeadSorted->next!=NULL)
+	{
+		len1=strlen(HeadSorted->arr);
+		for(i=0;i<len1-1;i++){
+			//sorted=newNode();
+				len2=strlen(HeadSorted->arr);
+		    for(j=0;j<(len2-i-1);j++){
+
+			   if((int)HeadSorted->arr[j]>(int)HeadSorted->arr[j+1])
+				{
+				
+					temp = HeadSorted->arr[j];
+					HeadSorted->arr[j] = HeadSorted->arr[j+1];
+					HeadSorted->arr[j+1] = temp;
+				}
+				
+
+
+			}
+		}
+	
+	
+		HeadSorted=HeadSorted->next;
+		
+	}
+	//HeadSorted->next=NULL;
+	displayList(sorted,n);
+	return sorted;
+}
+
+	
+int main()
+{
+	list *l1,*head;
+	int n,num,i,j;
+	char arr[100];
+	l1=newNode();
+	head=l1;
+	printf("\n\tPlease enter number of strings to be inserted :");
+	scanf("%d",&n);
+
+			for(i=0;i<n;i++){
+scanf("%s",arr);
+		strcpy(l1->arr,arr);
+		l1->next=newNode();
+		l1=l1->next;
+			l1->next=NULL;
+		}
+	
+		//displayList(head,n);
+sorted=copyLinkedlist(head,n);
+//displayList(sorted,n);
+sorted=sortedList(n);
+//displayList(sorted,n);
+n=compareList(head,n);
+/*for(i=0;i<2;i++)
+{
+	for(j=0;j<2;j++)
+	{
+		//for(k=0;k<n;k++)
+	//	{
+			printf("%s",SetList[i].arr[j]);//perfectly printing strings in an array
+	//	}
+	}
+}*/
+
+
+	
+//sorted=sortedList(head,n);
+	//linear_search(head,n);
+}
+int compareList(list * head,int n)
+{
+	list * nextsorted,*originalsorted;
+	final * SetDup[100];
+	originalsorted=sorted;
+	nextsorted=sorted->next;
+	int fliper[100]={0},i=0,j=0,q=0,l1,l2;
+	list *headnext=head->next;
+	int count=0,w,len;
+//	strcpy(SetList[0].arr[0],"ABC");
+//	strcpy(SetList[1].arr[1],"DFG");
+/*	for(;originalsorted->next!=NULL;originalsorted=originalsorted->next)
+	{
+		i++;
+	//	printf("\n%s",head->arr);
+		printf("\n\t%s",sorted->arr);
+		
+		//SetList[i]=newSetNode();
+	//	SetDup[i]=SetList[i];
+	//j=i;
+		while(nextsorted->next!=NULL)
+		{
+				
+			if(strcmp(originalsorted->arr,nextsorted->arr))
+			{
+	
+				strcpy(SetList[i].arr[j],head->next->arr);
+				j++;
+			
+				nextnode=nextnode->next;
+			count++;
+				SetList[i].count=count++;
+				printf("%s",head->next->arr);
+				printf("%s",SetList[i].arr[j]);
+				//SetDup[i]=head;
+			}	headnext=headnext->next;
+			nextsorted=nextsorted->next;
+		}
+		//head=head->next;
+	}
+	*/
+	
+	
+	for(i=0;i<n, originalsorted->next!=NULL;i++)
+	{
+
+		for(j=0;j<n, nextsorted->next!=NULL, head->next!=NULL;j++)
+		{
+		//	if(strlen(originalsorted)==strlen(nextsorted)){
+				//printf("%s", originalsorted->arr);
+			//	printf("%s",nextsorted->arr);
+	//printf("\n\t%s",originalsorted->arr);
+	//	printf("\n\t******%s",nextsorted->arr);
+			//	l1=strlen(originalsorted->arr);
+			//	l2=strlen(nextsorted->arr);
+				//printf("**%d",strcmp(originalsorted->arr,nextsorted->arr));
+			//	printf("\n\t%s",originalsorted->arr);
+	//	printf("\n\t******%s",nextsorted->arr);
+			if (0==(strcmp(originalsorted->arr,nextsorted->arr)))
+			{
+	
+						strcpy(SetList[j].arr[j],head->next->arr);
+					
+						SetList[j].count++;	
+							printf("*****%s",SetList[j].arr[j]);
+			}
+	head=head->next;
+		nextsorted=nextsorted->next;		
+	
+		}		//arr[i]=1;
+				//arr[j]=1;
+				
+	originalsorted=originalsorted->next;
+	nextsorted=originalsorted->next;
+		}
+		for(i=0;i<10;i++)
+		{
+		printf("\n\t%s",SetList[i].arr[i]);	
+			printf("\n\t%d",SetList[i].count);		
+		}
+		
+//	} 
+return i;
+}
